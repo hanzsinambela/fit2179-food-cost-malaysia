@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Average Monthly Cost of Poultry by State",
+    "subtitle": "Standardized chicken pricing metrics per household allotment (RM)",
+    "fontSize": 13,
+    "anchor": "start",
+    "color": "#1e293b"
+  },
+  "width": "container",
+  "height": 280,
+  "data": {
+    "values": [
+      {"state": "Johor", "poultry": 15.20},
+      {"state": "Kedah", "poultry": 13.80},
+      {"state": "Kelantan", "poultry": 12.90},
+      {"state": "Melaka", "poultry": 14.50},
+      {"state": "Negeri Sembilan", "poultry": 14.80},
+      {"state": "Pahang", "poultry": 14.10},
+      {"state": "Penang", "poultry": 15.90},
+      {"state": "Perak", "poultry": 14.00},
+      {"state": "Perlis", "poultry": 13.50},
+      {"state": "Selangor", "poultry": 16.10},
+      {"state": "Terengganu", "poultry": 13.90},
+      {"state": "Sabah", "poultry": 17.50},
+      {"state": "Sarawak", "poultry": 17.10},
+      {"state": "Federal Territory of Kuala Lumpur", "poultry": 16.50},
+      {"state": "Federal Territory of Putrajaya", "poultry": 16.30}
+    ]
+  },
+  "mark": {
+    "type": "bar",
+    "cornerRadiusTopLeft": 4,
+    "cornerRadiusTopRight": 4,
+    "color": "#e056fd"
+  },
+  "encoding": {
+    "x": {
+      "field": "state",
+      "type": "nominal",
+      "title": "State",
+      "sort": "-y",
+      "axis": {
+        "labelAngle": -45,
+        "labelFontSize": 9
+      }
+    },
+    "y": {
+      "field": "poultry",
+      "type": "quantitative",
+      "title": "Cost (RM)",
+      "scale": {"domain": [0, 20]}
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "poultry", "type": "quantitative", "title": "Poultry Cost (RM)"}
+    ]
+  }
+}

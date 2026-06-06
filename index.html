@@ -1,15 +1,77 @@
-<div class="row">
-    <div class="col-8" id="malaysia_map"></div>
-    <div class="col-4"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ringgit & The Recipe: Food Costs in Malaysia</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <style>
+        /* Base page styling and clean background presentation framework */
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background-color: #f1f5f9; margin: 0; padding: 30px; color: #334155; }
+        .container { max-width: 1000px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        header { text-align: left; padding-bottom: 20px; border-bottom: 2px solid #e2e8f0; margin-bottom: 30px; }
+        h1 { margin: 0 0 8px 0; color: #0f172a; font-size: 28px; font-weight: 700; }
+        h3 { margin: 0 0 10px 0; color: #1e293b; font-size: 18px; }
+        
+        /* Layout CSS Grid rules matching your layout mockup sketch structure exactly */
+        .layout-row { display: grid; gap: 25px; margin-bottom: 25px; align-items: start; }
+        .row-map { grid-template-columns: 7fr 4fr; } /* Map on left, text column on right */
+        .row-bars { grid-template-columns: 1fr 1fr; } /* Comparative side-by-side bar containers */
+        
+        .box { background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; }
+        .vis-container { width: 100%; min-height: 350px; }
+        p { line-height: 1.6; font-size: 14.5px; color: #475569; margin: 0 0 12px 0; }
+        p:last-child { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>Cost of Food in Malaysia</h1>
+        <p>An interactive analysis tracking essential household staple items and structural pricing variances across states.</p>
+    </header>
+
+    <div class="layout-row row-map">
+        <div class="box">
+            <div id="malaysia_map" class="vis-container"></div>
+        </div>
+        <div class="box">
+            <h3>Chart 1: Regional Cost Variances</h3>
+            <p>This interactive choropleth map illustrates the distribution of basic food grocery baskets across local regional networks.</p>
+            <p><strong>Key Insight:</strong> Higher pricing trends track prominently across import-dependent logistical pipelines in East Malaysia, contrasting with established production fields on the Peninsular mainland.</p>
+        </div>
+    </div>
+
+    <div class="layout-row row-bars">
+        <div class="box">
+            <div id="bar_poultry_expensive" class="vis-container"></div>
+        </div>
+        <div class="box">
+            <div id="bar_poultry_cheapest" class="vis-container"></div>
+        </div>
+    </div>
+
+    <div class="layout-row">
+        <div class="box">
+            <h3>Staple Extremes (Poultry Market Analysis)</h3>
+            <p>By dividing primary poultry commodities into maximum and minimum extreme boundaries, the data highlights localized supply protections. While centralized agricultural networks maintain retail price ceilings across Kelantan and Kedah, isolated territories face systemic premiums.</p>
+        </div>
+    </div>
+
 </div>
 
-<div class="row">
-    <div id="bar_poultry"></div>
-    <div id="bar_rice"></div>
-    <div id="bar_eggs"></div>
-</div>
+<script>
+    /* CRUCIAL MAP RULES: Links the layout anchors above to your individual JSON configuration paths */
+    vegaEmbed('#malaysia_map', 'charts/malaysia_map.json').catch(console.error);
+    vegaEmbed('#bar_poultry_expensive', 'charts/bar_expensive.json').catch(console.error);
+    vegaEmbed('#bar_poultry_cheapest', 'charts/bar_cheapest.json').catch(console.error);
+</script>
 
-<div class="row">
-    <div id="scatter_income"></div>
-    <div id="grouped_retail"></div>
-</div>
+</body>
+</html>

@@ -1,77 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Ringgit & The Recipe: Food Costs in Malaysia</title>
-    
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cost of Food in Malaysia Dashboard</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
-    <style>
-        /* Base page styling and clean background presentation framework */
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background-color: #f1f5f9; margin: 0; padding: 30px; color: #334155; }
-        .container { max-width: 1000px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        header { text-align: left; padding-bottom: 20px; border-bottom: 2px solid #e2e8f0; margin-bottom: 30px; }
-        h1 { margin: 0 0 8px 0; color: #0f172a; font-size: 28px; font-weight: 700; }
-        h3 { margin: 0 0 10px 0; color: #1e293b; font-size: 18px; }
-        
-        /* Layout CSS Grid rules matching your layout mockup sketch structure exactly */
-        .layout-row { display: grid; gap: 25px; margin-bottom: 25px; align-items: start; }
-        .row-map { grid-template-columns: 7fr 4fr; } /* Map on left, text column on right */
-        .row-bars { grid-template-columns: 1fr 1fr; } /* Comparative side-by-side bar containers */
-        
-        .box { background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; }
-        .vis-container { width: 100%; min-height: 350px; }
-        p { line-height: 1.6; font-size: 14.5px; color: #475569; margin: 0 0 12px 0; }
-        p:last-child { margin-bottom: 0; }
-    </style>
+  <style>
+    body {
+      background-color: #f8fafc;
+      font-family: system-ui, -apple-system, sans-serif;
+      color: #1e293b;
+    }
+    .dashboard-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      background: #ffffff;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    }
+    .chart-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.5rem;
+      height: 100%;
+    }
+    .description-card {
+      background: #fdfdfd;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.5rem;
+      height: 100%;
+    }
+    h1 { font-weight: 700; color: #0f172a; }
+    h3 { font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 1rem; }
+    p { line-height: 1.6; color: #475569; font-size: 0.95rem; }
+    .highlight { font-weight: 600; color: #0f172a; }
+  </style>
 </head>
 <body>
 
-<div class="container">
-
-    <header>
+  <div class="container">
+    <div class="dashboard-container">
+      
+      <header class="mb-5">
         <h1>Cost of Food in Malaysia</h1>
-        <p>An interactive analysis tracking essential household staple items and structural pricing variances across states.</p>
-    </header>
+        <p class="text-muted fs-5">An interactive analytical review of essential consumer food pricing thresholds across national distribution nodes.</p>
+        <hr class="my-4" style="color: #e2e8f0;">
+      </header>
 
-    <div class="layout-row row-map">
-        <div class="box">
-            <div id="malaysia_map" class="vis-container"></div>
+      <div class="row g-4 mb-5">
+        <div class="col-lg-8">
+          <div class="chart-card">
+            <div id="malaysia_map" class="w-100"></div>
+          </div>
         </div>
-        <div class="box">
+        <div class="col-lg-4">
+          <div class="description-card d-flex flex-column justify-content-center">
             <h3>Chart 1: Regional Cost Variances</h3>
             <p>This interactive choropleth map illustrates the distribution of basic food grocery baskets across local regional networks.</p>
-            <p><strong>Key Insight:</strong> Higher pricing trends track prominently across import-dependent logistical pipelines in East Malaysia, contrasting with established production fields on the Peninsular mainland.</p>
+            <p><span class="highlight">Key Insight:</span> Higher pricing trends track prominently across import-dependent logistical pipelines in East Malaysia, contrasting with established production fields on the Peninsular mainland.</p>
+          </div>
         </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <div class="col-md-6">
+          <div class="chart-card">
+            <div id="bar_poultry" class="w-100"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="chart-card">
+            <div id="bar_rice" class="w-100"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-12">
+          <div class="description-card">
+            <h3>Distribution Insights: Poultry & Staple Pricing</h3>
+            <p>The comparative bar charts above trace the discrete state-level pricing deviations between premium domestic product lines and standard market imports. By evaluating regional variance distributions directly against urban consumer hubs, clear structural supply inefficiencies become apparent across isolated trade pathways.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
 
-    <div class="layout-row row-bars">
-        <div class="box">
-            <div id="bar_poultry_expensive" class="vis-container"></div>
-        </div>
-        <div class="box">
-            <div id="bar_poultry_cheapest" class="vis-container"></div>
-        </div>
-    </div>
-
-    <div class="layout-row">
-        <div class="box">
-            <h3>Staple Extremes (Poultry Market Analysis)</h3>
-            <p>By dividing primary poultry commodities into maximum and minimum extreme boundaries, the data highlights localized supply protections. While centralized agricultural networks maintain retail price ceilings across Kelantan and Kedah, isolated territories face systemic premiums.</p>
-        </div>
-    </div>
-
-</div>
-
-<script>
-    /* CRUCIAL MAP RULES: Links the layout anchors above to your individual JSON configuration paths */
-    vegaEmbed('#malaysia_map', 'charts/malaysia_map.json').catch(console.error);
-    vegaEmbed('#bar_poultry_expensive', 'charts/bar_expensive.json').catch(console.error);
-    vegaEmbed('#bar_poultry_cheapest', 'charts/bar_cheapest.json').catch(console.error);
-</script>
+  <script type="text/javascript">
+    // Primary Map Rendering Element
+    vegaEmbed('#malaysia_map', 'charts/malaysia_map.json', { "actions": false }).catch(console.error);
+    
+    // Middle Distribution Chart Elements
+    // (Ensure files exist at these matching repository locations)
+    vegaEmbed('#bar_poultry', 'charts/bar_poultry.json', { "actions": false }).catch(console.error);
+    vegaEmbed('#bar_rice', 'charts/bar_rice.json', { "actions": false }).catch(console.error);
+  </script>
 
 </body>
 </html>

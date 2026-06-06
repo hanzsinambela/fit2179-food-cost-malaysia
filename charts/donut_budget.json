@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 260,
+  "height": 260,
+  "description": "A donut chart showing household budget splits for essential food items.",
+  "data": {
+    "values": [
+      {"category": "Poultry & Meat", "percentage": 35},
+      {"category": "Rice & Grains", "percentage": 25},
+      {"category": "Vegetables", "percentage": 18},
+      {"category": "Eggs & Dairy", "percentage": 12},
+      {"category": "Cooking Oils", "percentage": 10}
+    ]
+  },
+  "mark": {
+    "type": "arc", 
+    "innerRadius": 65, 
+    "stroke": "#fff"
+  },
+  "encoding": {
+    "theta": {
+      "field": "percentage", 
+      "type": "quantitative"
+    },
+    "color": {
+      "field": "category", 
+      "type": "nominal",
+      "scale": {
+        "scheme": "tableau10"
+      },
+      "legend": {
+        "orient": "bottom",
+        "columns": 2,
+        "title": null
+      }
+    },
+    "tooltip": [
+      {"field": "category", "type": "nominal", "title": "Category"},
+      {"field": "percentage", "type": "quantitative", "title": "Budget Share (%)"}
+    ]
+  }
+}

@@ -1,1 +1,64 @@
-
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Average Cost of a Basic Food Basket by Malaysian State",
+    "subtitle": "Combined average monthly costs of basic poultry, rice, eggs, and local vegetables (RM)",
+    "fontSize": 15, 
+    "subtitleFontSize": 11, 
+    "anchor": "start", 
+    "color": "#1e293b"
+  },
+  "width": "container",
+  "height": 350,
+  "data": {
+    "url": "https://raw.githubusercontent.com/AnsonSiau/Malaysia-GeoJSON/main/states.geojson",
+    "format": {"type": "json", "property": "features"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.Name",
+      "from": {
+        "data": {
+          "values": [
+            {"state": "Johor", "basket": 42.10}, 
+            {"state": "Kedah", "basket": 38.50},
+            {"state": "Kelantan", "basket": 36.20}, 
+            {"state": "Melaka", "basket": 40.80},
+            {"state": "Negeri Sembilan", "basket": 41.20}, 
+            {"state": "Pahang", "basket": 39.90},
+            {"state": "Pulau Pinang", "basket": 44.30}, 
+            {"state": "Perak", "basket": 39.10},
+            {"state": "Perlis", "basket": 37.80}, 
+            {"state": "Selangor", "basket": 45.50},
+            {"state": "Terengganu", "basket": 38.90}, 
+            {"state": "Sabah", "basket": 48.20},
+            {"state": "Sarawak", "basket": 47.60}, 
+            {"state": "W.P. Kuala Lumpur", "basket": 46.80},
+            {"state": "W.P. Labuan", "basket": 49.10}, 
+            {"state": "W.P. Putrajaya", "basket": 46.20}
+          ]
+        },
+        "key": "state",
+        "fields": ["basket"]
+      }
+    }
+  ],
+  "projection": {
+    "type": "equalEarth",
+    "center": [109.5, 4.2],
+    "scale": 4200
+  },
+  "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 1},
+  "encoding": {
+    "color": {
+      "field": "basket", 
+      "type": "quantitative", 
+      "title": "Basket Cost (RM)", 
+      "scale": {"scheme": "oranges"}
+    },
+    "tooltip": [
+      {"field": "properties.Name", "type": "nominal", "title": "State"},
+      {"field": "basket", "type": "quantitative", "title": "Avg Cost (RM)", "format": ".2f"}
+    ]
+  }
+}

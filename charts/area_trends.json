@@ -1,0 +1,56 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 220,
+  "title": {
+    "text": "Staple Cost Macro Inflation Trends (2023 - 2026)",
+    "subtitle": "Quarterly cumulative tracking of essential food group categories (RM)",
+    "fontSize": 12,
+    "anchor": "start",
+    "color": "#1e293b"
+  },
+  "data": {
+    "values": [
+      {"quarter": "2023 Q1", "commodity": "Poultry", "cost": 12.10},
+      {"quarter": "2023 Q1", "commodity": "Rice & Grains", "cost": 10.50},
+      {"quarter": "2023 Q1", "commodity": "Vegetables", "cost": 6.20},
+      
+      {"quarter": "2024 Q1", "commodity": "Poultry", "cost": 13.40},
+      {"quarter": "2024 Q1", "commodity": "Rice & Grains", "cost": 11.20},
+      {"quarter": "2024 Q1", "commodity": "Vegetables", "cost": 7.10},
+      
+      {"quarter": "2025 Q1", "commodity": "Poultry", "cost": 14.80},
+      {"quarter": "2025 Q1", "commodity": "Rice & Grains", "cost": 12.90},
+      {"quarter": "2025 Q1", "commodity": "Vegetables", "cost": 7.80},
+      
+      {"quarter": "2026 Q1", "commodity": "Poultry", "cost": 15.90},
+      {"quarter": "2026 Q1", "commodity": "Rice & Grains", "cost": 14.10},
+      {"quarter": "2026 Q1", "commodity": "Vegetables", "cost": 8.50}
+    ]
+  },
+  "mark": "area",
+  "encoding": {
+    "x": {
+      "field": "quarter",
+      "type": "nominal",
+      "title": "Reporting Period",
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "field": "cost",
+      "type": "quantitative",
+      "title": "Cumulative Cost Index (RM)"
+    },
+    "color": {
+      "field": "commodity",
+      "type": "nominal",
+      "scale": {"scheme": "category10"},
+      "title": "Food Group"
+    },
+    "tooltip": [
+      {"field": "quarter", "type": "nominal", "title": "Period"},
+      {"field": "commodity", "type": "nominal", "title": "Category"},
+      {"field": "cost", "type": "quantitative", "title": "Cost (RM)"}
+    ]
+  }
+}

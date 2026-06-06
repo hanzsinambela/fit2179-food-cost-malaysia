@@ -11,12 +11,12 @@
   "width": "container",
   "height": 350,
   "data": {
-    "url": "https://raw.githubusercontent.com/AnsonSiau/Malaysia-GeoJSON/main/states.geojson",
+    "url": "charts/malaysia.geojson",
     "format": {"type": "json", "property": "features"}
   },
   "transform": [
     {
-      "lookup": "properties.Name",
+      "lookup": "properties.name",
       "from": {
         "data": {
           "values": [
@@ -26,7 +26,7 @@
             {"state": "Melaka", "basket": 40.80},
             {"state": "Negeri Sembilan", "basket": 41.20}, 
             {"state": "Pahang", "basket": 39.90},
-            {"state": "Pulau Pinang", "basket": 44.30}, 
+            {"state": "Penang", "basket": 44.30}, 
             {"state": "Perak", "basket": 39.10},
             {"state": "Perlis", "basket": 37.80}, 
             {"state": "Selangor", "basket": 45.50},
@@ -44,9 +44,7 @@
     }
   ],
   "projection": {
-    "type": "equalEarth",
-    "center": [109.5, 4.2],
-    "scale": 4200
+    "type": "equalEarth"
   },
   "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 1},
   "encoding": {
@@ -57,7 +55,7 @@
       "scale": {"scheme": "oranges"}
     },
     "tooltip": [
-      {"field": "properties.Name", "type": "nominal", "title": "State"},
+      {"field": "properties.name", "type": "nominal", "title": "State"},
       {"field": "basket", "type": "quantitative", "title": "Avg Cost (RM)", "format": ".2f"}
     ]
   }

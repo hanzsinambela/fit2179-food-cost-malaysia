@@ -1,0 +1,53 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 220,
+  "title": {
+    "text": "State Median Income vs. Grocery Basket Cost",
+    "subtitle": "Checking correlation between household income thresholds and staple costs (RM)",
+    "fontSize": 12,
+    "anchor": "start",
+    "color": "#1e293b"
+  },
+  "data": {
+    "values": [
+      {"state": "Kelantan", "median_income": 3600, "basket_cost": 36.20},
+      {"state": "Perlis", "median_income": 4300, "basket_cost": 37.80},
+      {"state": "Kedah", "median_income": 4800, "basket_cost": 38.50},
+      {"state": "Terengganu", "median_income": 5000, "basket_cost": 38.90},
+      {"state": "Perak", "median_income": 5200, "basket_cost": 39.10},
+      {"state": "Pahang", "median_income": 5400, "basket_cost": 39.90},
+      {"state": "Melaka", "median_income": 6200, "basket_cost": 40.80},
+      {"state": "Negeri Sembilan", "median_income": 5800, "basket_cost": 41.20},
+      {"state": "Johor", "median_income": 6800, "basket_cost": 42.10},
+      {"state": "Penang", "median_income": 6500, "basket_cost": 44.30},
+      {"state": "Federal Territory of Putrajaya", "median_income": 9900, "basket_cost": 46.20},
+      {"state": "Federal Territory of Kuala Lumpur", "median_income": 10500, "basket_cost": 46.80}
+    ]
+  },
+  "mark": {
+    "type": "point",
+    "filled": true,
+    "size": 100,
+    "color": "#3b82f6"
+  },
+  "encoding": {
+    "x": {
+      "field": "median_income",
+      "type": "quantitative",
+      "title": "Median Monthly Income (RM)",
+      "scale": {"zero": false}
+    },
+    "y": {
+      "field": "basket_cost",
+      "type": "quantitative",
+      "title": "Basket Cost (RM)",
+      "scale": {"zero": false}
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "median_income", "type": "quantitative", "title": "Income (RM)"},
+      {"field": "basket_cost", "type": "quantitative", "title": "Basket Cost (RM)"}
+    ]
+  }
+}

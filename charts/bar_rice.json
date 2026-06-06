@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Average Monthly Cost of Rice Staples by State",
+    "subtitle": "Standardized local and imported rice consumption packages (RM)",
+    "fontSize": 13,
+    "anchor": "start",
+    "color": "#1e293b"
+  },
+  "width": "container",
+  "height": 280,
+  "data": {
+    "values": [
+      {"state": "Johor", "rice": 14.10},
+      {"state": "Kedah", "rice": 12.50},
+      {"state": "Kelantan", "rice": 11.80},
+      {"state": "Melaka", "rice": 13.20},
+      {"state": "Negeri Sembilan", "rice": 13.50},
+      {"state": "Pahang", "rice": 13.00},
+      {"state": "Penang", "rice": 14.80},
+      {"state": "Perak", "rice": 12.90},
+      {"state": "Perlis", "rice": 12.10},
+      {"state": "Selangor", "rice": 15.20},
+      {"state": "Terengganu", "rice": 12.70},
+      {"state": "Sabah", "rice": 16.40},
+      {"state": "Sarawak", "rice": 16.20},
+      {"state": "Federal Territory of Kuala Lumpur", "rice": 15.50},
+      {"state": "Federal Territory of Putrajaya", "rice": 15.30}
+    ]
+  },
+  "mark": {
+    "type": "bar",
+    "cornerRadiusTopLeft": 4,
+    "cornerRadiusTopRight": 4,
+    "color": "#22c55e"
+  },
+  "encoding": {
+    "x": {
+      "field": "state",
+      "type": "nominal",
+      "title": "State",
+      "sort": "-y",
+      "axis": {
+        "labelAngle": -45,
+        "labelFontSize": 9
+      }
+    },
+    "y": {
+      "field": "rice",
+      "type": "quantitative",
+      "title": "Cost (RM)",
+      "scale": {"domain": [0, 20]}
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "rice", "type": "quantitative", "title": "Rice Cost (RM)"}
+    ]
+  }
+}

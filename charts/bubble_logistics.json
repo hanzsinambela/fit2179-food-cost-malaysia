@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 240,
+  "title": {
+    "text": "Logistical Distance vs. Distribution Cost Markup",
+    "subtitle": "Tracking item supply radius against final retail premium percentage",
+    "fontSize": 12,
+    "anchor": "start",
+    "color": "#1e293b"
+  },
+  "data": {
+    "values": [
+      {"state": "Selangor", "distance": 45, "markup": 12, "volume": 5000},
+      {"state": "Johor", "distance": 180, "markup": 18, "volume": 4200},
+      {"state": "Penang", "distance": 320, "markup": 22, "volume": 3100},
+      {"state": "Pahang", "distance": 140, "markup": 15, "volume": 2200},
+      {"state": "Sabah", "distance": 1600, "markup": 45, "volume": 2800},
+      {"state": "Sarawak", "distance": 1100, "markup": 38, "volume": 3400}
+    ]
+  },
+  "mark": {"type": "circle", "opacity": 0.75},
+  "encoding": {
+    "x": {
+      "field": "distance",
+      "type": "quantitative",
+      "title": "Supply Chain Distance Transit (km)"
+    },
+    "y": {
+      "field": "markup",
+      "type": "quantitative",
+      "title": "Retail Markup Cost Ratio (%)"
+    },
+    "size": {
+      "field": "volume",
+      "type": "quantitative",
+      "scale": {"range": [100, 800]},
+      "title": "Demand Volume"
+    },
+    "color": {
+      "field": "state",
+      "type": "nominal",
+      "scale": {"scheme": "category10"},
+      "title": "State Node"
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title": "State Node"},
+      {"field": "distance", "type": "quantitative", "title": "Distance (km)"},
+      {"field": "markup", "type": "quantitative", "title": "Markup (%)"}
+    ]
+  }
+}

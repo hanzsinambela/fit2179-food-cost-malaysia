@@ -198,21 +198,21 @@
   </div>
 
   <script type="text/javascript">
-    // Section 1 Graphics (Fully Active)
+// Section 1 Graphics
     vegaEmbed('#malaysia_map', 'charts/malaysia_map.json', { "actions": false }).catch(console.error);
     vegaEmbed('#bar_poultry', 'charts/bar_poultry.json', { "actions": false }).catch(console.error);
     vegaEmbed('#bar_rice', 'charts/bar_rice.json', { "actions": false }).catch(console.error);
 
-    // Section 2 Graphics (Fully Active)
+    // Section 2 Graphics
     vegaEmbed('#donut_budget', 'charts/donut_budget.json', { "actions": false }).catch(console.error);
     vegaEmbed('#scatter_income', 'charts/scatter_income.json', { "actions": false }).catch(console.error);
     vegaEmbed('#area_trends', 'charts/area_trends.json', { "actions": false }).catch(console.error);
 
-    // Section 3 Graphics (Temporarily paused to keep the page from crashing until files are built)
-    // vegaEmbed('#grouped_retail', 'charts/grouped_retail.json', { "actions": false }).catch(console.error);
-    // vegaEmbed('#line_volatility', 'charts/line_volatility.json', { "actions": false }).catch(console.error);
-    // vegaEmbed('#heatmap_seasonal', 'charts/heatmap_seasonal.json', { "actions": false }).catch(console.error);
-    // vegaEmbed('#bubble_logistics', 'charts/bubble_logistics.json', { "actions": false }).catch(console.error);
+    // Section 3 Graphics - NOW FULLY OPERATIONAL
+    vegaEmbed('#grouped_retail', 'charts/grouped_retail.json', { "actions": false }).catch(console.error);
+    vegaEmbed('#line_volatility', 'charts/line_volatility.json', { "actions": false }).catch(console.error);
+    vegaEmbed('#heatmap_seasonal', 'charts/heatmap_seasonal.json', { "actions": false }).catch(console.error);
+    vegaEmbed('#bubble_logistics', 'charts/bubble_logistics.json', { "actions": false }).catch(console.error);
   </script>
 
 </body>

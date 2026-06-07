@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 240,
+  "title": {
+    "text": "Supermarket vs. Wet Market Price Variance",
+    "subtitle": "Average baseline pricing per kg across alternative retail formats (RM)",
+    "fontSize": 12,
+    "anchor": "start",
+    "color": "#1e293b"
+  },
+  "data": {
+    "values": [
+      {"state": "Selangor", "market_type": "Supermarket", "price": 14.50},
+      {"state": "Selangor", "market_type": "Wet Market", "price": 12.10},
+      {"state": "Johor", "market_type": "Supermarket", "price": 13.90},
+      {"state": "Johor", "market_type": "Wet Market", "price": 11.80},
+      {"state": "Penang", "market_type": "Supermarket", "price": 14.10},
+      {"state": "Penang", "market_type": "Wet Market", "price": 12.00},
+      {"state": "Sabah", "market_type": "Supermarket", "price": 16.20},
+      {"state": "Sabah", "market_type": "Wet Market", "price": 15.10},
+      {"state": "Sarawak", "market_type": "Supermarket", "price": 15.80},
+      {"state": "Sarawak", "market_type": "Wet Market", "price": 14.60}
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "state",
+      "type": "nominal",
+      "title": "State",
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "field": "price",
+      "type": "quantitative",
+      "title": "Average Price per kg (RM)"
+    },
+    "xOffset": {"field": "market_type"},
+    "color": {
+      "field": "market_type",
+      "type": "nominal",
+      "scale": {"range": ["#4f46e5", "#f59e0b"]},
+      "title": "Outlet Type"
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "market_type", "type": "nominal", "title": "Outlet"},
+      {"field": "price", "type": "quantitative", "title": "Price (RM)"}
+    ]
+  }
+}

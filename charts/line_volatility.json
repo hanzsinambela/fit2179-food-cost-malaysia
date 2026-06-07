@@ -1,0 +1,53 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 240,
+  "title": {
+    "text": "Weekly Fresh Produce Price Volatility",
+    "subtitle": "Tracking fast-moving items over a 12-week market period (RM/kg)",
+    "fontSize": 12,
+    "anchor": "start",
+    "color": "#1e293b"
+  },
+  "data": {
+    "values": [
+      {"week": "Wk 1", "item": "Local Tomatoes", "price": 5.20},
+      {"week": "Wk 4", "item": "Local Tomatoes", "price": 5.80},
+      {"week": "Wk 8", "item": "Local Tomatoes", "price": 7.40},
+      {"week": "Wk 12", "item": "Local Tomatoes", "price": 6.10},
+      {"week": "Wk 1", "item": "Red Chillies", "price": 13.50},
+      {"week": "Wk 4", "item": "Red Chillies", "price": 16.20},
+      {"week": "Wk 8", "item": "Red Chillies", "price": 14.00},
+      {"week": "Wk 12", "item": "Red Chillies", "price": 18.50},
+      {"week": "Wk 1", "item": "Round Cabbage", "price": 4.10},
+      {"week": "Wk 4", "item": "Round Cabbage", "price": 4.30},
+      {"week": "Wk 8", "item": "Round Cabbage", "price": 4.20},
+      {"week": "Wk 12", "item": "Round Cabbage", "price": 4.80}
+    ]
+  },
+  "mark": {"type": "line", "point": true, "strokeWidth": 3},
+  "encoding": {
+    "x": {
+      "field": "week",
+      "type": "nominal",
+      "title": "Timeline",
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "field": "price",
+      "type": "quantitative",
+      "title": "Market Price Index (RM)"
+    },
+    "color": {
+      "field": "item",
+      "type": "nominal",
+      "scale": {"scheme": "dark2"},
+      "title": "Produce Item"
+    },
+    "tooltip": [
+      {"field": "item", "type": "nominal", "title": "Item"},
+      {"field": "week", "type": "nominal", "title": "Period"},
+      {"field": "price", "type": "quantitative", "title": "Price per kg (RM)"}
+    ]
+  }
+}

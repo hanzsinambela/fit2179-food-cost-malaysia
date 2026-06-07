@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 240,
+  "title": {
+    "text": "Staple Item Cost Inflation Heatmap Matrix",
+    "subtitle": "Monthly commodity index intensity adjustments (Base 100)",
+    "fontSize": 12,
+    "anchor": "start",
+    "color": "#1e293b"
+  },
+  "data": {
+    "values": [
+      {"month": "Jan", "item": "Poultry", "index": 102},
+      {"month": "Feb", "item": "Poultry", "index": 105},
+      {"month": "Mar", "item": "Poultry", "index": 108},
+      {"month": "Apr", "item": "Poultry", "index": 101},
+      {"month": "Jan", "item": "Rice", "index": 100},
+      {"month": "Feb", "item": "Rice", "index": 101},
+      {"month": "Mar", "item": "Rice", "index": 102},
+      {"month": "Apr", "item": "Rice", "index": 103},
+      {"month": "Jan", "item": "Vegetables", "index": 115},
+      {"month": "Feb", "item": "Vegetables", "index": 122},
+      {"month": "Mar", "item": "Vegetables", "index": 104},
+      {"month": "Apr", "item": "Vegetables", "index": 98}
+    ]
+  },
+  "mark": "rect",
+  "encoding": {
+    "x": {"field": "month", "type": "nominal", "title": "Month", "sort": ["Jan", "Feb", "Mar", "Apr"]},
+    "y": {"field": "item", "type": "nominal", "title": "Staple Item"},
+    "color": {
+      "field": "index",
+      "type": "quantitative",
+      "scale": {"scheme": "purples"},
+      "title": "Inflation Index"
+    },
+    "tooltip": [
+      {"field": "item", "type": "nominal", "title": "Item"},
+      {"field": "month", "type": "nominal", "title": "Month"},
+      {"field": "index", "type": "quantitative", "title": "Index Val"}
+    ]
+  }
+}
